@@ -19,7 +19,6 @@ const Sidebar = () => {
       left: '-60%'
     }
   }
-  console.log("selected", selected);
   return (
     <>
       <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpaned(!expanded)}>
@@ -39,16 +38,14 @@ const Sidebar = () => {
         </div>
         <div className="menu">
           {SidebarData.map((item, index) => {
-            console.log(selected, index);
             return (
               <Link key={index}
-
                 onClick={() => { setSelected(item.id) }}
-                className={"menuItem"}
+                className={selected == index ? "active menuItem" : "menuItem"}
                 to={{
                   pathname: item.page,
                   state: { id: index, activate: true, }
-                }} par>
+                }} >
                 <item.icon />
                 <span>{item.heading}</span>
               </Link>
