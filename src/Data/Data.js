@@ -142,3 +142,33 @@ export const UpdatesData = [
     time: "2 hours ago",
   },
 ];
+
+export const employeesOption = [
+  {
+    label: 'All',
+    value: 'All',
+  },
+  {
+    label: 'Teacher',
+    value: 'Teacher',
+  },
+  {
+    label: 'Staff',
+    value: 'Staff',
+  },
+]
+
+export const studentsOption = [
+  {
+    label: 'All',
+    value: null,
+  },
+  {
+    label: 'Paid',
+    value: 'Paid',
+  },
+  {
+    label: 'Defaulters',
+    value: 'Defaulters',
+  },
+]

@@ -41,7 +41,7 @@ const Sidebar = () => {
             return (
               <Link key={index}
                 onClick={() => { setSelected(item.id) }}
-                className={selected == index ? "active menuItem" : "menuItem"}
+                className={"menuItem"}
                 to={{
                   pathname: item.page,
                   state: { id: index, activate: true, }
