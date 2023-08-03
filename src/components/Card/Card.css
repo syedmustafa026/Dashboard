@@ -43,11 +43,13 @@
 
 /* sideDetail*/
 .detail {
-  flex: 1;
+  flex: 1 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .detail > span:nth-child(2) {
@@ -55,7 +57,7 @@
   font-weight: bold;
 }
 .detail > span:nth-child(3) {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* ExpandedCard */

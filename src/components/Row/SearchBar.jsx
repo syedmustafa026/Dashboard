@@ -9,7 +9,6 @@ const SearchBar = (props) => {
     const onChangeFilterType = ({ target: { value } }) => {
         props.setFilterType(value)
     }
-
     return (
         <div className='mt-5 mb-2' style={{ display: "flex", flexDirection: 'row', justifyContent: 'space-between', border: 'none' }}>
             <Link to={props.buttonPath}> <Button style={{ background: '#212529' }} color='black' type="primary">Add {props.name}</Button></Link>

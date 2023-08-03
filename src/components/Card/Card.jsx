@@ -33,18 +33,11 @@ function CompactCard({ param, setExpanded }) {
       }}
       layoutId="expandableCard"
       onClick={setExpanded}
-    >
-      <div className="radialBar">
-        <CircularProgressbar
-          value={param.barValue}
-          text={`${param.barValue}%`}
-        />
-        <span>{param.title}</span>
-      </div>
+    > 
       <div className="detail">
         <Png />
-        <span>${param.value}</span>
-        <span>Last 24 hours</span>
+        <span>PKR {param.value}</span>
+        <span>{param.title}</span>
       </div>
     </motion.div>
   );
@@ -119,7 +112,7 @@ function ExpandedCard({ param, setExpanded }) {
       <div className="chartContainer">
         <Chart options={data.options} series={param.series} type="area" />
       </div>
-      <span>Last 24 hours</span>
+      <span>This month</span>
     </motion.div>
   );
 }

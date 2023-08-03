@@ -4,9 +4,13 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Button from 'react-bootstrap/Button';
 import Paper from "@mui/material/Paper";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faEdit, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 import "./Table.css";
+import { employeeData } from "../../Data/DummyData";
 
 function createData(name, trackingId, date, status) {
   return { name, trackingId, date, status };
@@ -20,23 +24,21 @@ const rows = [
 ];
 
 
-const makeStyle=(status)=>{
-  if(status === 'Approved')
-  {
+const makeStyle = (status) => {
+  if (status === 'Approved') {
     return {
       background: 'rgb(145 254 159 / 47%)',
       color: 'green',
     }
   }
-  else if(status === 'Pending')
-  {
-    return{
+  else if (status === 'Pending') {
+    return {
       background: '#ffadad8f',
       color: 'red',
     }
   }
-  else{
-    return{
+  else {
+    return {
       background: '#59bfff',
       color: 'white',
     }
@@ -45,42 +47,37 @@ const makeStyle=(status)=>{
 
 export default function BasicTable() {
   return (
+    <div className='container-fluid'>
       <div className="Table">
-      <h3>Recent Admissions</h3>
-        <TableContainer
-          component={Paper}
-          style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
-        >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Product</TableCell>
-                <TableCell align="left">Tracking ID</TableCell>
-                <TableCell align="left">Date</TableCell>
-                <TableCell align="left">Status</TableCell>
-                <TableCell align="left"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody style={{ color: "white" }}>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="left">{row.trackingId}</TableCell>
-                  <TableCell align="left">{row.date}</TableCell>
-                  <TableCell align="left">
-                    <span className="status" style={makeStyle(row.status)}>{row.status}</span>
-                  </TableCell>
-                  <TableCell align="left" className="Details">Details</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <h3>Recent Admissions</h3>
+        <table className="table table-hover table-xl table-bordered text-center">
+          <thead className='table-light fw-bolder'>
+            <tr>
+              <th scope="col" style={{ width: '3%' }}>S.no</th>
+              <th scope="col">NAME</th>
+              <th scope="col">ROLE</th>
+              <th scope="col">DESIGNATION</th>
+              <th scope="col">SALARY</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employeeData?.length > 0 && employeeData.map((val, i) => (
+              < tr key={i} >
+                <td>{i + 1}</td>
+                <td>{val.name}</td>
+                <td>{val.role}</td>
+                <td>{val.designation}</td>
+                <td>{val.salary}</td>
+                <td><Button variant="success">Pay now</Button></td>
+                <td>
+                  <Link> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                </td>
+              </tr>
+            ))
+            }
+          </tbody>
+        </table>
       </div>
+    </div >
   );
 }

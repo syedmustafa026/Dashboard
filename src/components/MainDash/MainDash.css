@@ -1,20 +1,32 @@
-.MainDash{
+.MainDash {
     /* padding-top: 1rem; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
+.ant-btn-primary {
+    background-color: rgb(43, 33, 187);
+}
+
+.ant-btn-primary:hover {
+    background-color: rgb(228, 228, 228);
+    color: black;
+}
+
+.card-header {
+    border-radius: 20px;
+}
+
 @media screen and (max-width: 1200px) {
-    .MainDash{
-        justify-content:flex-start;
+    .MainDash {
+        justify-content: flex-start;
         margin-top: 2rem;
     }
 }
 
-@media screen and (max-width: 768px)
-{
-    .MainDash{
+@media screen and (max-width: 768px) {
+    .MainDash {
         align-items: center;
     }
 }
