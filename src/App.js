@@ -6,6 +6,8 @@ import Students from './Pages/Students'
 import Revenue from './Pages/Revenue'
 import Expenses from './Pages/Expenses'
 import AddEmployee from './components/Add/AddEmployees'
+import EmployeeDetail from './components/Details/EmployeeDetail'
+import AddStudent from './components/Add/AddStudent'
 
 
 export default function App() {
@@ -18,9 +20,12 @@ export default function App() {
           <Route path="/Employees" element={<Employees />} />
           <Route exact path="/employee/add" element={<AddEmployee />} />
           <Route exact path="/employee/edit" element={< AddEmployee />} />
-          <Route exact path="/employee/view" element={< AddEmployee />} />
+          <Route exact path="/employee/view" element={< EmployeeDetail />} />
 
           <Route path="/Students" element={<Students />} />
+          <Route path="/Student/add" element={<AddStudent />} />
+
+
           <Route path="/Revenue" element={<Revenue />} />
           <Route path="/Expenses" element={<Expenses />} />
 

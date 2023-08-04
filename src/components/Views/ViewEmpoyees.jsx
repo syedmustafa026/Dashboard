@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import SearchBar from '../Row/SearchBar';
 import { employeeData } from '../../Data/DummyData';
+import { employeesOption } from '../../Data/Data';
 
-const ViewEmployee = () => {
+const ViewEmployees = () => {
     const [filterType, setFilterType] = useState('All')
     return (
         <div className='container-fluid'>
@@ -15,6 +16,7 @@ const ViewEmployee = () => {
                 buttonPath={'/employee/add'}
                 filterType={filterType}
                 setFilterType={setFilterType}
+                options={employeesOption}
             />
             <div className='mt-3 card'>
                 <div className='bg-success card-header text-center fw-bold'>
@@ -33,7 +35,7 @@ const ViewEmployee = () => {
                 </thead>
                 <tbody>
                     {employeeData?.length > 0 && employeeData.map((val, i) => (
-                        filterType === "All" ?
+                        filterType == "All" ?
                             < tr key={i} >
                                 <td>{i + 1}</td>
                                 <td>{val.name}</td>
@@ -42,7 +44,7 @@ const ViewEmployee = () => {
                                 <td>{val.salary}</td>
                                 <td><Button variant="success">Pay now</Button></td>
                                 <td>
-                                    <Link> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                                    <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
                                 </td>
                             </tr> :
                             val.role == filterType ?
@@ -54,7 +56,7 @@ const ViewEmployee = () => {
                                     <td>{val.salary}</td>
                                     <td><Button variant="success">Pay now</Button></td>
                                     <td>
-                                        <Link> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                                        <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
                                     </td>
                                 </tr> : null
                     ))
@@ -65,4 +67,4 @@ const ViewEmployee = () => {
     )
 }
 
-export default ViewEmployee
+export default ViewEmployees

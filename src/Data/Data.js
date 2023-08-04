@@ -161,14 +161,14 @@ export const employeesOption = [
 export const studentsOption = [
   {
     label: 'All',
-    value: null,
+    value: 'All',
   },
   {
     label: 'Paid',
     value: 'Paid',
   },
   {
-    label: 'Defaulters',
-    value: 'Defaulters',
+    label: 'Defaulter',
+    value: 'Defaulter',
   },
 ]
