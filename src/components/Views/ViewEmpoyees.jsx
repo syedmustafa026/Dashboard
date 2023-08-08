@@ -44,7 +44,7 @@ const ViewEmployees = () => {
                                 <td>{val.salary}</td>
                                 <td><Button variant="success">Pay now</Button></td>
                                 <td>
-                                    <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                                    <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit' state={{ id: val.id }}  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
                                 </td>
                             </tr> :
                             val.role == filterType ?
@@ -56,7 +56,7 @@ const ViewEmployees = () => {
                                     <td>{val.salary}</td>
                                     <td><Button variant="success">Pay now</Button></td>
                                     <td>
-                                        <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                                        <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit' state={{ id: val.id }}  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
                                     </td>
                                 </tr> : null
                     ))

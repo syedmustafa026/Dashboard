@@ -50,6 +50,12 @@ export const SidebarData = [
     heading: 'Other Expenses',
     page: '/Expenses'
   },
+  {
+    id: 5,
+    icon: UilSignOutAlt,
+    heading: 'Log out',
+    page: '/Login'
+  },
 ];
 
 // Analytics Cards Data

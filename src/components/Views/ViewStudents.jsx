@@ -3,14 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faEdit, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
+import '../../App.css'
 import SearchBar from '../Row/SearchBar';
 import { studentData } from '../../Data/DummyData';
 import { studentsOption } from '../../Data/Data'
 const ViewStudents = () => {
     const [filterType, setFilterType] = useState('All')
-    studentData.map(val => console.log(val.fee_status))
+
     return (
-        <div className='container-fluid'>
+        <div style={{ scrollbarWidth: '2px' }} className='container-fluid overflow-scroll'>
             <SearchBar
                 name={"Student"}
                 buttonPath={'/student/add'}
@@ -23,8 +24,8 @@ const ViewStudents = () => {
                     <h2 style={{ color: 'navajowhite' }}>STUDENT</h2>
                 </div>
             </div>
-            <table className="table table-hover table-xl table-bordered text-center">
-                <thead className='table-light fw-bolder'>
+            <table className="table overflow-scroll table-hover table-xl table-bordered text-center">
+                <thead className='table-light fw-bolder '>
                     <tr>
                         <th scope="col" style={{ width: '3%' }}>S.NO</th>
                         <th scope="col">GR.NO</th>
@@ -46,7 +47,7 @@ const ViewStudents = () => {
                                 <td>{val.monthly_fees}</td>
                                 <td><Button variant="success">Pay now</Button></td>
                                 <td>
-                                    <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                                    <Link to='/student/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/student/edit' state={{ id: val.id }} >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
                                 </td>
                             </tr> :
                             val.fee_status == filterType ?
@@ -59,7 +60,7 @@ const ViewStudents = () => {
                                     <td>{val.monthly_fees}</td>
                                     <td><Button variant="success">Pay now</Button></td>
                                     <td>
-                                        <Link to='/employee/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/employee/edit'  >  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
+                                        <Link to='/student/view'> <FontAwesomeIcon className='link-warning' icon={faCircleInfo} /></Link>    |      <Link to='/student/edit' state={{ id: val.id }}>  <FontAwesomeIcon className='link-success' icon={faEdit} /></Link>  |     <Link><FontAwesomeIcon onClick={() => window.confirm("Are you sure you want to delete? ")} className='link-danger' icon={faTrash} /></Link>
                                     </td>
                                 </tr> : null
                     ))

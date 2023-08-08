@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { employeeData } from '../../Data/DummyData'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import '../../App.css'
 import Sidebar from '../Sidebar'
 
 const AddEmployee = () => {
-    
+    const location = useLocation()
     const navigate = useNavigate()
-    const submitEmployee = async (event,) => {
+    const [employee, setEmployee] = useState(null)
+    const [name, setName] = useState('')
+    const [father_name, setfather_Name] = useState('')
+    const [mobile, setMobile] = useState('')
+    const [cnic, setCnic] = useState('')
+    const [salary, setSalary] = useState('')
+    const [qualification, setQualification] = useState('')
+    const [designation, setDesignation] = useState('')
+    const [role, setRole] = useState('')
+    const [selected, setSelected] = useState('Teacher')
+    const submitEmployee = async (event) => {
         event.preventDefault()
         const payload = {}
         payload.name = event.target.name.value || ''
         payload.father_name = event.target.father_name.value || ''
-        payload.mobile = event.target.mobile.value || ''
+        payload.mobile_number = event.target.mobile.value || ''
         payload.cnic = event.target.cnic.value || ''
         payload.salary = event.target.salary.value || ''
         payload.qualification = event.target.qualification.value || ''
@@ -22,6 +32,20 @@ const AddEmployee = () => {
         employeeData.push(payload)
         navigate(-1)
     }
+    const handleChange = event => {
+        setSelected(event.target.value)
+    }
+    useEffect(() => {
+        if (location.state?.id == null) {
+            console.log("null mila")
+        }
+        else {
+            const data = employeeData.filter((val, id) => { return location.state.id == id + 1 })
+            setEmployee(data[0])
+            setSelected(data[0].role)
+        }
+    }, [])
+
     return (
         <div className="App">
             <div className="AppGlass">
@@ -30,7 +54,7 @@ const AddEmployee = () => {
                     <form onSubmit={submitEmployee}>
                         <div className='card'>
                             <div className='bg-success card-header text-center'>
-                                <h2 style={{ color: 'navajowhite' }}>Add Employee</h2>
+                                <h2 style={{ color: 'navajowhite' }}>{employee?.id ? "EDIT " : "ADD "} EMPLOYEE</h2>
                             </div>
                             <div className='card-body'>
                                 <div className='row mb-3'>
@@ -40,7 +64,9 @@ const AddEmployee = () => {
                                                 type="radio"
                                                 name="selected_radio"
                                                 id="teacher"
-                                                value="Teacher" defaultChecked />
+                                                onChange={handleChange}
+                                                checked={selected === "Teacher"}
+                                                value="Teacher" />
                                             <label className="form-check-label" htmlFor="Teacher">
                                                 Teacher
                                             </label>
@@ -49,7 +75,14 @@ const AddEmployee = () => {
 
                                     <div className='col-6'>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="selected_radio" id="staff" value="Staff" />
+                                            <input
+                                                className="form-check-input"
+                                                checked={selected === "Staff"}
+                                                onChange={handleChange}
+                                                type="radio"
+                                                name="selected_radio"
+                                                id="staff"
+                                                value="Staff" />
                                             <label className="form-check-label" htmlFor="Staff">
                                                 Staff
                                             </label>
@@ -63,6 +96,7 @@ const AddEmployee = () => {
                                             Name
                                         </label>
                                         <input
+                                            defaultValue={employee?.name}
                                             type="text"
                                             className="form-control"
                                             name="name"
@@ -75,6 +109,7 @@ const AddEmployee = () => {
                                             Father Name
                                         </label>
                                         <input
+                                            defaultValue={employee?.father_name}
                                             type="text"
                                             className="form-control"
                                             name="father_name"
@@ -89,6 +124,7 @@ const AddEmployee = () => {
                                             Mobile
                                         </label>
                                         <input
+                                            defaultValue={employee?.mobile_number}
                                             type="number"
                                             minLength={11}
                                             maxLength={11}
@@ -104,6 +140,7 @@ const AddEmployee = () => {
                                             CNIC
                                         </label>
                                         <input
+                                            defaultValue={employee?.cnic}
                                             type='number'
                                             minLength={14}
                                             maxLength={14}
@@ -120,6 +157,7 @@ const AddEmployee = () => {
                                             Qualification
                                         </label>
                                         <input
+                                            defaultValue={employee?.qualification}
                                             type="text"
                                             className="form-control"
                                             name="qualification"
@@ -133,6 +171,7 @@ const AddEmployee = () => {
                                             Designation
                                         </label>
                                         <input
+                                            defaultValue={employee?.designation}
                                             type="text"
                                             className="form-control"
                                             name="designation"
@@ -146,6 +185,7 @@ const AddEmployee = () => {
                                             Salary
                                         </label>
                                         <input
+                                            defaultValue={employee?.salary}
                                             type="number"
                                             className="form-control"
                                             name="salary"

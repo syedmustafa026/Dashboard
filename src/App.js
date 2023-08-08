@@ -23,7 +23,8 @@ export default function App() {
           <Route exact path="/employee/view" element={< EmployeeDetail />} />
 
           <Route path="/Students" element={<Students />} />
-          <Route path="/Student/add" element={<AddStudent />} />
+          <Route path="/student/add" element={<AddStudent />} />
+          <Route path="/student/edit" element={<AddStudent />} />
 
 
           <Route path="/Revenue" element={<Revenue />} />
